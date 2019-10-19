@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="timer"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Sample Thing Type -->
+	<thing-type id="timer" listed="true" extensible="number,dimmer,switch">
+		<label>Timer Thing</label>
+		<description>A timer for switches, dimmers and numbers</description>
+
+		<channels>
+			<channel id="endtime" typeId="EndTime" />
+			<channel id="timeleft" typeId="TimeLeft" />
+			<channel id="duration" typeId="Duration" />
+			<channel id="automatic" typeId="Automatic" />
+		</channels>
+
+		<config-description>
+			<!--
+			* Persistent - The timer survives OpenHAB restarts or not
+			* ReactToStateChange - If timer should be enabled when receiving state update
+			* ReactToCommandChange - If timer should be enabled when receiving commands
+			* ResetTimeOnTrigger - If true, an on trigger will also reset the on time effectively extending the time
+			* DefaultTime - The preconfigured default time
+			* MaxTime - Optional maximum time the timer might be on, more specifically the maximum value time left can take.
+			-->
+			<parameter name="persistent" type="boolean" required="true">
+				<label>Persistent</label>
+				<description>Persist the timer over restarts</description>
+				<default>true</default>
+			</parameter>
+			<parameter name="defaultTime" type="text" required="true">
+				<label>DefaultTime</label>
+				<description>Default start time in timer notation</description>
+			</parameter>
+			<parameter name="maxTime" type="text" required="false">
+				<label>MaxTime</label>
+				<description>Maximum allowed time left</description>
+			</parameter>
+		</config-description>
+
+	</thing-type>
+	<!--
+	* TriggerOn:Switch - Is pulsed when the timer starts
+* TriggerOff:Switch - Is pulsed when the timer stops
+* CalendarTime:Text - The time when the timer expires, the time the timer previously expired.
+* TimeLeft:Text - The time left in human readable format, Write to set another time
+* Duration:Text - The absolute duration of the timer, overwrites DefaultTime.
+* Enabled:Switch - If the timer will be run or not.
+	-->
+
+	<channel-type id="EndTime">
+		<item-type>DateTime</item-type>
+		<label>End time</label>
+		<description>The time when the timer expires, or the time the timer previously expired.</description>
+	</channel-type>
+
+
+	<channel-type id="TimeLeft">
+		<item-type>String</item-type>
+		<label>TimeLeft</label>
+		<description>The time left in human readable format, Write to set another time</description>
+	</channel-type>
+
+
+	<channel-type id="Duration">
+		<item-type>String</item-type>
+		<label>Duration</label>
+		<description>The absolute duration of the timer, overwrites DefaultTime.</description>
+	</channel-type>
+
+	<channel-type id="Automatic">
+		<item-type>Switch</item-type>
+		<label>Automatic</label>
+		<description>If the timer will automatically enable when state changes from rest state</description>
+	</channel-type>
+
+	<channel-type id="number">
+		<item-type>Number</item-type>
+		<label>Number value</label>
+		<config-description-ref uri="thing-type:timer:dimmer_channel" />
+	</channel-type>
+
+	<channel-type id="dimmer">
+		<item-type>Dimmer</item-type>
+		<label>Percentage value</label>
+		<config-description-ref uri="thing-type:timer:dimmer_channel" />
+	</channel-type>
+
+	<channel-type id="switch">
+		<item-type>Switch</item-type>
+		<label>On/Off switch</label>
+		<config-description-ref uri="thing-type:timer:switch_channel" />
+	</channel-type>
+
+</thing:thing-descriptions>

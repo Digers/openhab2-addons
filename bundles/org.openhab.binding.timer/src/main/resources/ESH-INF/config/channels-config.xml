@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:config-description="https://openhab.org/schemas/config-description/v1.0.0"
+        xsi:schemaLocation="https://openhab.org/schemas/config-description/v1.0.0 https://openhab.org/schemas/config-description-1.0.0.xsd">
+
+    <config-description uri="thing-type:timer:switch_channel">
+        <parameter name="restCondition" required="true" type="boolean">
+            <label>Rest state</label>
+            <description>The state to which the timer will set when expired.</description>
+            <default>false</default>
+        </parameter>
+        <parameter name="turnOnState" required="true" type="boolean">
+            <label>Active state</label>
+            <description>The state the timer will set when activated</description>
+            <default>true</default>
+        </parameter>
+        <parameter name="activateOnRestChange" required="true" type="boolean">
+            <label>Activate on rest change</label>
+            <description>If set to true, when the thing rest condition is changed from the rest condition, the timer will start</description>
+            <default>true</default>
+        </parameter>
+        <parameter name="timerMode" required="true" type="integer">
+            <label>Behavior</label>
+            <description>The desired behavior</description>
+            <options>
+                <option value="1"> Foo option </option>
+                <option value="2"> Bar option </option>
+            </options>
+        </parameter>
+        <!--<parameter name="reactToStateChange" type="boolean">
+            <label>ReactToStateChange</label>
+            <description></description>
+        </parameter>
+        <parameter name="reactToCommandChange" type="boolean">
+            <label>ReactToCommandChange</label>
+            <description></description>
+        </parameter>
+        <parameter name="resetTimeOnTrigger" type="boolean">
+            <label>ResetTimeOnTrigger</label>
+            <description></description>
+        </parameter> -->
+        <parameter name="managed" type="boolean">
+            <label>Managed channel</label>
+            <description>If set to true, the timer will manage the channel. This means that the timer will respond to refresh and keep a state for the channel</description>
+        </parameter>
+    </config-description>
+
+    <config-description uri="thing-type:timer:dimmer_channel">
+        <parameter name="restCondition" type="decimal">
+            <label>Rest state</label>
+            <description>The state to which the timer will set when expired.</description>
+            <default>false</default>
+        </parameter>
+        <parameter name="turnOnState" type="decimal">
+            <label>Active state</label>
+            <description>The state the timer will set when activated</description>
+            <default>true</default>
+        </parameter>
+        <parameter name="activateOnRestChange" type="boolean">
+            <label>Activate on rest change</label>
+            <description>If set to true, when the thing rest condition is changed from the rest condition, the timer will start</description>
+            <default>true</default>
+        </parameter>
+        <parameter name="ReactToStateChange" type="boolean">
+            <label>ReactToStateChange</label>
+            <description></description>
+
+        </parameter>
+        <parameter name="ReactToCommandChange" type="boolean">
+            <label>ReactToCommandChange</label>
+            <description></description>
+        </parameter>
+        <parameter name="ResetTimeOnTrigger" type="boolean">
+            <label>ResetTimeOnTrigger</label>
+            <description></description>
+        </parameter>
+    </config-description>
+
+</config-description:config-descriptions>
