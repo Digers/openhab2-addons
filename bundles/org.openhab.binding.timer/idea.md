@@ -121,7 +121,7 @@ Further the channels have the following features:
   Ex: Front light should light until you turn it off manually.
   
 What I would want to know/discuss is the feasibility of such binding. There are no physical thing
-behind the binding and I remember reading @kai arguing against such bindings in the past. I have
+behind the binding, I have
 however rationalised it to that for ex. KNX there are logic modules that could do this for OpenHAB, this is just cutting the
 middle hands. One worry is that to many features are bolted on or baked in, so that it becomes a behemoth
 of a binding that people starts to dislike.
